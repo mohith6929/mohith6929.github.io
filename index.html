@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohith Chowdary — ECE @ IIT Bhubaneswar</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f7f5f2; --text: #1a1a1a; --muted: #6b6b6b;
+      --accent: #2a5caa; --accent-light: #eef3fb;
+      --border: #ddd9d3; --card: #ffffff;
+      --serif: 'DM Serif Display', serif; --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; font-weight: 300; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(247,245,242,0.93); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border); z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 6%; height: 58px;
+    }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.8rem; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .page { max-width: 860px; margin: 0 auto; padding: 0 5%; }
+    section { padding: 90px 0 50px; }
+    section:first-of-type { padding-top: 130px; }
+
+    h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 3.6rem); font-weight: 400; line-height: 1.12; margin-bottom: 0.3em; }
+    h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; border-bottom: 1px solid var(--border); padding-bottom: 0.45rem; margin-bottom: 1.4rem; }
+    h3 { font-size: 0.97rem; font-weight: 500; margin-bottom: 0.2rem; }
+    p { color: var(--muted); margin-bottom: 0.8rem; }
+
+    .subtitle { font-size: 1rem; color: var(--muted); max-width: 580px; line-height: 1.85; }
+    .subtitle strong { color: var(--text); font-weight: 500; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.2rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 1rem; font-size: 0.82rem; font-weight: 500; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #1d4a8a; }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .edu-item { display: flex; gap: 1.2rem; padding-bottom: 1.6rem; margin-bottom: 1.6rem; border-bottom: 1px solid var(--border); }
+    .edu-item:last-child { border-bottom: none; margin-bottom: 0; }
+    .edu-year { font-size: 0.78rem; font-weight: 500; color: var(--accent); min-width: 90px; padding-top: 0.18rem; letter-spacing: 0.03em; }
+    .edu-detail p { margin: 0; font-size: 0.88rem; }
+    .edu-badge { display: inline-block; font-size: 0.72rem; font-weight: 500; background: var(--accent-light); color: var(--accent); border-radius: 3px; padding: 0.12rem 0.5rem; margin-top: 0.35rem; }
+
+    .ach-list { list-style: none; }
+    .ach-list li { display: flex; align-items: baseline; gap: 0.8rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .ach-list li:last-child { border-bottom: none; }
+    .ach-rank { font-family: var(--serif); font-size: 1.2rem; color: var(--accent); min-width: 52px; }
+
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.1rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.3rem 1.4rem; transition: box-shadow 0.2s, transform 0.2s; }
+    .card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
+    .card-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); border-radius: 3px; padding: 0.12rem 0.5rem; margin-bottom: 0.55rem; }
+    .card h3 { font-size: 0.93rem; margin-bottom: 0.35rem; }
+    .card p { font-size: 0.86rem; margin: 0 0 0.6rem; }
+    .card ul { padding-left: 1.1rem; }
+    .card ul li { font-size: 0.84rem; color: var(--muted); margin-bottom: 0.25rem; }
+
+    .skills-block { margin-bottom: 1.4rem; }
+    .skills-block h3 { font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.6rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .tag { font-size: 0.82rem; background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 0.28rem 0.75rem; color: var(--text); }
+
+    .resp-item { padding-bottom: 1.4rem; margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .resp-item:last-child { border-bottom: none; }
+    .resp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.3rem; }
+    .resp-period { font-size: 0.8rem; color: var(--muted); }
+    .resp-item ul { padding-left: 1.1rem; }
+    .resp-item ul li { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.2rem; }
+
+    footer { text-align: center; padding: 2.5rem 5%; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 3rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 4%; } .nav-links { gap: 1rem; }
+      .edu-item { flex-direction: column; gap: 0.3rem; }
+      .project-grid { grid-template-columns: 1fr; }
+      .resp-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="#about">Mohith Chowdary</a>
+  <div class="nav-links">
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#responsibility">Activities</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <section id="about" class="fade-in">
+    <h1>Thalacheeru<br>Mohith Chowdary</h1>
+    <p class="subtitle">
+      <strong>B.Tech student in Electronics &amp; Communication Engineering</strong> at
+      <strong>IIT Bhubaneswar</strong> (CGPA: 8.36). Passionate about
+      <strong>VLSI &amp; digital design</strong> — from RTL coding in Verilog to FPGA deployment.
+      I enjoy building hardware that works end-to-end, with a growing interest in physical design flows.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:mohithchowdary6929@gmail.com" class="btn btn-primary">✉ Email Me</a>
+      <a href="https://linkedin.com/in/Mohith-Chowdary" class="btn btn-outline" target="_blank">LinkedIn</a>
+      <a href="https://github.com/mohith6929" class="btn btn-outline" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="fade-in">
+    <h2>Education</h2>
+    <div class="edu-item">
+      <div class="edu-year">2023 – Present</div>
+      <div class="edu-detail">
+        <h3>B.Tech — Electronics &amp; Communication Engineering</h3>
+        <p>Indian Institute of Technology Bhubaneswar</p>
+        <span class="edu-badge">CGPA: 8.36</span>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2021 – 2023</div>
+      <div class="edu-detail">
+        <h3>Senior School Certificate — CBSE (Class XII)</h3>
+        <p>Sasi Educational Institute, Velivennu</p>
+        <span class="edu-badge">92.8%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="fade-in">
+    <h2>Scholastic Achievements</h2>
+    <ul class="ach-list">
+      <li><span class="ach-rank">#4603</span><span>All India Rank in <strong>JEE Advanced</strong> out of 0.18 million candidates</span></li>
+      <li><span class="ach-rank">#6779</span><span>All India Rank in <strong>JEE Main B.Tech</strong> out of 1.2 million candidates</span></li>
+      <li><span class="ach-rank">#2284</span><span>All India Rank in <strong>JEE Main B.Planning</strong></span></li>
+    </ul>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <div class="project-grid">
+
+      <div class="card">
+        <span class="card-tag">VLSI · FPGA</span>
+        <h3>RTL Design of RV32I RISC-V Processor</h3>
+        <p><em>Verilog, Vivado, Basys3 FPGA</em></p>
+        <ul>
+          <li>Designed single-cycle, multi-cycle, and 5-stage pipelined RV32I processor in Verilog.</li>
+          <li>Implemented hazard detection and forwarding unit to resolve pipeline hazards.</li>
+          <li>Verified ADD, ADDI, LW, SW, JAL, JALR, BEQ instructions via simulation &amp; FPGA testing.</li>
+          <li>Synthesized and deployed on Basys3 using the Vivado toolchain.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Hardware Design</span>
+        <h3>bfloat-16 Floating-Point Adder/Subtractor</h3>
+        <p><em>Verilog, Vivado, Basys3 FPGA</em></p>
+        <ul>
+          <li>Designed a hardware unit supporting bfloat-16 addition and subtraction.</li>
+          <li>Implemented exponent alignment, mantissa normalization, and rounding logic.</li>
+          <li>Verified via VHDL testbench simulation and FPGA deployment on Basys3.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Embedded · IoT</span>
+        <h3>Arduino-Based Gas Detection System</h3>
+        <p><em>Arduino, ESP8266, Blynk IoT</em></p>
+        <ul>
+          <li>Built a gas monitoring system using MQ-5 sensor for LPG/CH₄ detection.</li>
+          <li>Integrated ESP8266 with Blynk IoT for real-time mobile alerts.</li>
+          <li>Implemented threshold-based buzzer alarms and cloud-based logging.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="fade-in">
+    <h2>Technical Skills</h2>
+    <div class="skills-block">
+      <h3>Programming Languages</h3>
+      <div class="tags">
+        <span class="tag">C</span><span class="tag">C++</span>
+        <span class="tag">Python</span><span class="tag">Verilog</span>
+      </div>
+    </div>
+    <div class="skills-block">
+      <h3>EDA &amp; Design Tools</h3>
+      <div class="tags">
+        <span class="tag">Vivado</span><span class="tag">Cadence Virtuoso</span>
+        <span class="tag">MATLAB</span><span class="tag">LTspice</span>
+        <span class="tag">Git</span><span class="tag">VS Code</span>
+        <span class="tag">Linux (Ubuntu)</span>
+      </div>
+    </div>
+    <div class="skills-block">
+      <h3>Hardware &amp; Concepts</h3>
+      <div class="tags">
+        <span class="tag">FPGA Design</span><span class="tag">Digital Design</span>
+        <span class="tag">RISC-V Architecture</span><span class="tag">RTL Design</span>
+        <span class="tag">Static Timing Analysis</span><span class="tag">UART</span>
+        <span class="tag">8085 / 8051</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESPONSIBILITY -->
+  <section id="responsibility" class="fade-in">
+    <h2>Positions of Responsibility</h2>
+
+    <div class="resp-item">
+      <div class="resp-header">
+        <h3>Assistant Co-ordinator — Counselling Service Team</h3>
+        <span class="resp-period">Apr 2025 – Present</span>
+      </div>
+      <ul>
+        <li>Organizing and planning events under the Counselling Service Team, IIT Bhubaneswar.</li>
+        <li>Assisting Student Guides in mentoring freshers.</li>
+      </ul>
+    </div>
+
+    <div class="resp-item">
+      <div class="resp-header">
+        <h3>Student Guide — Counselling Service Team</h3>
+        <span class="resp-period">Apr 2024 – Apr 2025</span>
+      </div>
+      <ul>
+        <li>Guided freshers at IIT Bhubaneswar with academic and non-academic issues throughout the year.</li>
+        <li>Organised several events boosting mental health on campus.</li>
+      </ul>
+    </div>
+
+    <div class="resp-item">
+      <div class="resp-header">
+        <h3>Associate — Wissenaire (Techno-Management Fest)</h3>
+        <span class="resp-period">Oct 2023 – Mar 2024</span>
+      </div>
+      <ul>
+        <li>Managed coupon and food partners for Wissenaire, the techno-management fest of IIT Bhubaneswar.</li>
+      </ul>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2025 Thalacheeru Mohith Chowdary &nbsp;·&nbsp;
+    <a href="mailto:mohithchowdary6929@gmail.com">mohithchowdary6929@gmail.com</a> &nbsp;·&nbsp;
+    IIT Bhubaneswar
+  </p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
