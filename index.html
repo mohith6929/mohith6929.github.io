@@ -23,10 +23,27 @@
       display: flex; justify-content: space-between; align-items: center;
       padding: 0 6%; height: 58px;
     }
-    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--text); text-decoration: none; }
+    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--text); text-decoration: none; white-space: nowrap; }
     .nav-links { display: flex; gap: 1.8rem; }
     .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
+
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 58px; left: 0; right: 0;
+      background: rgba(247,245,242,0.98); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border); z-index: 99;
+      flex-direction: column; padding: 0.5rem 6% 1.2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 0.88rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding: 0.8rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a:active { color: var(--accent); }
 
     .page { max-width: 860px; margin: 0 auto; padding: 0 5%; }
     section { padding: 90px 0 50px; }
@@ -85,7 +102,9 @@
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 600px) {
-      nav { padding: 0 4%; } .nav-links { gap: 1rem; }
+      nav { padding: 0 5%; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
       .edu-item { flex-direction: column; gap: 0.3rem; }
       .project-grid { grid-template-columns: 1fr; }
       .resp-header { flex-direction: column; }
@@ -102,7 +121,17 @@
     <a href="#skills">Skills</a>
     <a href="#responsibility">Activities</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#education" class="menu-link">Education</a>
+  <a href="#projects" class="menu-link">Projects</a>
+  <a href="#skills" class="menu-link">Skills</a>
+  <a href="#responsibility" class="menu-link">Activities</a>
+</div>
 
 <div class="page">
 
@@ -277,6 +306,21 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.06 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
 </script>
 
 </body>
