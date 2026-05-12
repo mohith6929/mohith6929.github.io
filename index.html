@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-site-verification" content="uXdyasDzyXT3o-V6MEax5t4R5ZycYIDWDz2bCM5eoFo" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="google-site-verification" content="uXdyasDzyXT3o-V6MEax5t4R5ZycYIDWDz2bCM5eoFo" />
   <title>Mohith Chowdary — ECE @ IIT Bhubaneswar</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
   <style>
@@ -83,6 +83,8 @@
     .card p { font-size: 0.86rem; margin: 0 0 0.6rem; }
     .card ul { padding-left: 1.1rem; }
     .card ul li { font-size: 0.84rem; color: var(--muted); margin-bottom: 0.25rem; }
+    .card-gh { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.7rem; font-size: 0.78rem; font-weight: 500; color: var(--muted); text-decoration: none; border: 1px solid var(--border); border-radius: 4px; padding: 0.22rem 0.65rem; transition: all 0.2s; }
+    .card-gh:hover { color: var(--accent); border-color: var(--accent); }
 
     .skills-block { margin-bottom: 1.4rem; }
     .skills-block h3 { font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.6rem; }
@@ -147,8 +149,12 @@
     </p>
     <div class="hero-links">
       <a href="mailto:mohithchowdary6929@gmail.com" class="btn btn-primary">✉ Email Me</a>
-      <a href="https://www.linkedin.com/in/mohith-chowdary-053256307/" class="btn btn-outline" target="_blank">LinkedIn</a>
+      <a href="https://linkedin.com/in/Mohith-Chowdary" class="btn btn-outline" target="_blank">LinkedIn</a>
       <a href="https://github.com/mohith6929" class="btn btn-outline" target="_blank">GitHub</a>
+      <a href="Mohith_Chowdary.pdf" class="btn btn-outline" target="_blank" download="Mohith_Chowdary_Resume.pdf">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><polyline points="9 14 12 17 15 14"/></svg>
+        Resume
+      </a>
     </div>
   </section>
 
@@ -173,16 +179,6 @@
     </div>
   </section>
 
-  <!-- ACHIEVEMENTS -->
-  <section id="achievements" class="fade-in">
-    <h2>Scholastic Achievements</h2>
-    <ul class="ach-list">
-      <li><span class="ach-rank">#4603</span><span>All India Rank in <strong>JEE Advanced</strong> out of 0.18 million candidates</span></li>
-      <li><span class="ach-rank">#6779</span><span>All India Rank in <strong>JEE Main B.Tech</strong> out of 1.2 million candidates</span></li>
-      <li><span class="ach-rank">#2284</span><span>All India Rank in <strong>JEE Main B.Planning</strong></span></li>
-    </ul>
-  </section>
-
   <!-- PROJECTS -->
   <section id="projects" class="fade-in">
     <h2>Projects</h2>
@@ -198,6 +194,10 @@
           <li>Verified ADD, ADDI, LW, SW, JAL, JALR, BEQ instructions via simulation &amp; FPGA testing.</li>
           <li>Synthesized and deployed on Basys3 using the Vivado toolchain.</li>
         </ul>
+        <a href="https://github.com/mohith6929/RISC-V-Processor" class="card-gh" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
       </div>
 
       <div class="card">
@@ -209,6 +209,10 @@
           <li>Implemented exponent alignment, mantissa normalization, and rounding logic.</li>
           <li>Verified via VHDL testbench simulation and FPGA deployment on Basys3.</li>
         </ul>
+        <a href="https://github.com/mohith6929/bfloat16-adder-subtractor" class="card-gh" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
       </div>
 
       <div class="card">
@@ -220,9 +224,11 @@
           <li>Integrated ESP8266 with Blynk IoT for real-time mobile alerts.</li>
           <li>Implemented threshold-based buzzer alarms and cloud-based logging.</li>
         </ul>
+        <a href="https://github.com/mohith6929/arduino-gas-detection" class="card-gh" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
       </div>
-
-    </div>
   </section>
 
   <!-- SKILLS -->
@@ -293,10 +299,20 @@
 
   </section>
 
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="fade-in">
+    <h2>Scholastic Achievements</h2>
+    <ul class="ach-list">
+      <li><span class="ach-rank">#4603</span><span>All India Rank in <strong>JEE Advanced</strong> out of 0.18 million candidates</span></li>
+      <li><span class="ach-rank">#6779</span><span>All India Rank in <strong>JEE Main B.Tech</strong> out of 1.2 million candidates</span></li>
+      <li><span class="ach-rank">#2284</span><span>All India Rank in <strong>JEE Main B.Planning</strong></span></li>
+    </ul>
+  </section>
+
 </div>
 
 <footer>
-  <p>© 2025 Thalacheeru Mohith Chowdary &nbsp;·&nbsp;
+  <p>© 2026 Thalacheeru Mohith Chowdary &nbsp;·&nbsp;
     <a href="mailto:mohithchowdary6929@gmail.com">mohithchowdary6929@gmail.com</a> &nbsp;·&nbsp;
     IIT Bhubaneswar
   </p>
