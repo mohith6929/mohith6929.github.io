@@ -5,112 +5,273 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="google-site-verification" content="uXdyasDzyXT3o-V6MEax5t4R5ZycYIDWDz2bCM5eoFo" />
   <title>Mohith Chowdary — ECE @ IIT Bhubaneswar</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #f7f5f2; --text: #1a1a1a; --muted: #6b6b6b;
-      --accent: #2a5caa; --accent-light: #eef3fb;
-      --border: #ddd9d3; --card: #ffffff;
-      --serif: 'DM Serif Display', serif; --sans: 'DM Sans', sans-serif;
+      --bg: #f7f5f2;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --accent: #2a5caa;
+      --accent-light: #eef3fb;
+      --accent-warm: #f0ebe4;
+      --border: #ddd9d3;
+      --card: #ffffff;
+      --hero-bg: #e8f0fa;
+      --nav-bg: #1e3a6e;
+      --nav-text: #ffffff;
+      --serif: 'DM Serif Display', serif;
+      --sans: 'DM Sans', sans-serif;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; font-weight: 300; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 19px; line-height: 1.75; font-weight: 300; }
 
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
-      background: rgba(247,245,242,0.93); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border); z-index: 100;
+      background: var(--nav-bg);
+      border-bottom: 1px solid rgba(255,255,255,0.08); z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 6%; height: 58px;
+      padding: 0 3%; height: 58px;
     }
-    .nav-name { font-family: var(--serif); font-size: 1.05rem; color: var(--text); text-decoration: none; white-space: nowrap; }
+    .nav-name { font-family: var(--serif); font-size: 1.15rem; color: rgba(255,255,255,0.92); text-decoration: none; white-space: nowrap; }
     .nav-links { display: flex; gap: 1.8rem; }
-    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a { font-size: 0.95rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.6); transition: color 0.2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 1.5px; background: rgba(255,255,255,0.8); transition: width 0.25s ease; }
+    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-links a:hover::after { width: 100%; }
 
     .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     .mobile-menu {
       display: none; position: fixed; top: 58px; left: 0; right: 0;
-      background: rgba(247,245,242,0.98); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border); z-index: 99;
-      flex-direction: column; padding: 0.5rem 6% 1.2rem;
+      background: #1e3a6e; backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 99;
+      flex-direction: column; padding: 0.5rem 3% 1.2rem;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-size: 0.88rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding: 0.8rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a { font-size: 0.97rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.65); padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); transition: color 0.2s; }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover, .mobile-menu a:active { color: var(--accent); }
+    .mobile-menu a:hover, .mobile-menu a:active { color: #fff; }
 
-    .page { max-width: 860px; margin: 0 auto; padding: 0 5%; }
-    section { padding: 90px 0 50px; }
-    section:first-of-type { padding-top: 130px; }
+    /* ── HERO BAND ── */
+    .hero-band {
+      background: var(--hero-bg);
+      border-bottom: 1px solid #c8d9f0;
+      margin-top: 58px;
+    }
+    .hero-band .page { padding-top: 0; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 0 3%; }
+    section { padding: 70px 0 50px; }
+    section:first-of-type { padding-top: 64px; padding-bottom: 64px; }
 
-    h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 3.6rem); font-weight: 400; line-height: 1.12; margin-bottom: 0.3em; }
-    h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; border-bottom: 1px solid var(--border); padding-bottom: 0.45rem; margin-bottom: 1.4rem; }
-    h3 { font-size: 0.97rem; font-weight: 500; margin-bottom: 0.2rem; }
+    h1 { font-family: var(--serif); font-size: clamp(3rem, 6.5vw, 4.6rem); font-weight: 400; line-height: 1.1; margin-bottom: 0.3em; }
+    h2 { font-family: var(--serif); font-size: 2.1rem; font-weight: 400; border-bottom: 1px solid var(--border); padding-bottom: 0.45rem; margin-bottom: 1.4rem; }
+    h3 { font-size: 1.08rem; font-weight: 500; margin-bottom: 0.2rem; }
     p { color: var(--muted); margin-bottom: 0.8rem; }
 
-    .subtitle { font-size: 1rem; color: var(--muted); max-width: 580px; line-height: 1.85; }
-    .subtitle strong { color: var(--text); font-weight: 500; }
-    .hero-links { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.2rem; }
-    .btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 1rem; font-size: 0.82rem; font-weight: 500; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: #1d4a8a; }
-    .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    /* ── HERO ── */
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.2rem;
+    }
+    .hero-text { flex: 1; min-width: 0; }
+    .hero-photo-wrap {
+      flex-shrink: 0;
+      width: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--accent-warm);
+      border: 3px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(42,92,170,0.13);
+    }
+    /* Photo ring accent */
+    .hero-photo::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px dashed rgba(42,92,170,0.22);
+      pointer-events: none;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+    }
+    /* Fallback initials if no photo */
+    .hero-photo-initials {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      color: var(--accent);
+      opacity: 0.55;
+      user-select: none;
+      font-style: italic;
+    }
+    .hero-photo-label {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      letter-spacing: 0.04em;
+      opacity: 0.7;
+    }
+    .subtitle { font-size: 1.15rem; color: var(--muted); max-width: 680px; line-height: 1.85; margin: 0 auto; }
 
+    .subtitle { font-size: 1.1rem; color: var(--muted); max-width: 620px; line-height: 1.85; }
+    .subtitle strong { color: var(--text); font-weight: 500; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.4rem; justify-content: center; }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.6rem 1.3rem; font-size: 1rem; font-weight: 500; border-radius: 4px; text-decoration: none; transition: all 0.22s; }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(42,92,170,0.18); }
+    .btn-primary:hover { background: #1d4a8a; box-shadow: 0 4px 14px rgba(42,92,170,0.28); transform: translateY(-1px); }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); transform: translateY(-1px); }
+
+    /* ── EDUCATION ── */
     .edu-item { display: flex; gap: 1.2rem; padding-bottom: 1.6rem; margin-bottom: 1.6rem; border-bottom: 1px solid var(--border); }
     .edu-item:last-child { border-bottom: none; margin-bottom: 0; }
-    .edu-year { font-size: 0.78rem; font-weight: 500; color: var(--accent); min-width: 90px; padding-top: 0.18rem; letter-spacing: 0.03em; }
-    .edu-detail p { margin: 0; font-size: 0.88rem; }
-    .edu-badge { display: inline-block; font-size: 0.72rem; font-weight: 500; background: var(--accent-light); color: var(--accent); border-radius: 3px; padding: 0.12rem 0.5rem; margin-top: 0.35rem; }
+    .edu-year { font-size: 1rem; font-weight: 500; color: var(--accent); min-width: 110px; padding-top: 0.18rem; letter-spacing: 0.03em; }
+    .edu-detail p { margin: 0; font-size: 1.05rem; }
+    .edu-badge {
+      display: inline-block; font-size: 0.9rem; font-weight: 500;
+      background: var(--accent-light); color: var(--accent);
+      border-radius: 3px; padding: 0.15rem 0.6rem; margin-top: 0.35rem;
+    }
 
+    /* ── ACHIEVEMENTS ── */
     .ach-list { list-style: none; }
-    .ach-list li { display: flex; align-items: baseline; gap: 0.8rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-    .ach-list li:last-child { border-bottom: none; }
-    .ach-rank { font-family: var(--serif); font-size: 1.2rem; color: var(--accent); min-width: 52px; }
+    .ach-list li {
+      display: flex; align-items: baseline; gap: 0.8rem;
+      padding: 0.7rem 0.8rem; margin-bottom: 0.4rem;
+      border-radius: 6px; font-size: 1.05rem;
+      background: var(--card); border: 1px solid var(--border);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .ach-list li:hover { border-color: rgba(42,92,170,0.3); box-shadow: 0 3px 12px rgba(42,92,170,0.07); }
+    .ach-rank { font-family: var(--serif); font-size: 1.4rem; color: var(--accent); min-width: 60px; font-style: italic; }
 
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.1rem; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.3rem 1.4rem; transition: box-shadow 0.2s, transform 0.2s; }
-    .card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
-    .card-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); border-radius: 3px; padding: 0.12rem 0.5rem; margin-bottom: 0.55rem; }
-    .card h3 { font-size: 0.93rem; margin-bottom: 0.35rem; }
-    .card p { font-size: 0.86rem; margin: 0 0 0.6rem; }
+    /* ── PROJECTS ── */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.1rem; }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.3rem 1.4rem;
+      transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
+      position: relative; overflow: hidden;
+    }
+    .card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), #5b8fd4);
+      opacity: 0; transition: opacity 0.22s;
+    }
+    .card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); border-color: rgba(42,92,170,0.2); }
+    .card:hover::after { opacity: 1; }
+    .card-tag {
+      display: inline-block; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-light);
+      border-radius: 3px; padding: 0.15rem 0.6rem; margin-bottom: 0.55rem;
+    }
+    .card h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
+    .card p { font-size: 1rem; margin: 0 0 0.6rem; }
     .card ul { padding-left: 1.1rem; }
-    .card ul li { font-size: 0.84rem; color: var(--muted); margin-bottom: 0.25rem; }
-    .card-gh { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.7rem; font-size: 0.78rem; font-weight: 500; color: var(--muted); text-decoration: none; border: 1px solid var(--border); border-radius: 4px; padding: 0.22rem 0.65rem; transition: all 0.2s; }
-    .card-gh:hover { color: var(--accent); border-color: var(--accent); }
+    .card ul li { font-size: 0.98rem; color: var(--muted); margin-bottom: 0.25rem; }
+    .card-gh {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      margin-top: 0.7rem; font-size: 0.88rem; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 4px;
+      padding: 0.28rem 0.75rem; transition: all 0.2s;
+    }
+    .card-gh:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
 
+    /* ── SKILLS ── */
     .skills-block { margin-bottom: 1.4rem; }
-    .skills-block h3 { font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.6rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .tag { font-size: 0.82rem; background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 0.28rem 0.75rem; color: var(--text); }
+    .skills-block h3 { font-size: 1rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.6rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      font-size: 1rem; background: var(--card);
+      border: 1px solid var(--border); border-radius: 4px;
+      padding: 0.35rem 1rem; color: var(--text);
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); cursor: default; }
 
+    /* ── RESPONSIBILITY ── */
     .resp-item { padding-bottom: 1.4rem; margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
     .resp-item:last-child { border-bottom: none; }
     .resp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.3rem; }
-    .resp-period { font-size: 0.8rem; color: var(--muted); }
+    .resp-period { font-size: 1rem; color: var(--muted); }
     .resp-item ul { padding-left: 1.1rem; }
-    .resp-item ul li { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.2rem; }
+    .resp-item ul li { font-size: 1.02rem; color: var(--muted); margin-bottom: 0.2rem; }
 
-    footer { text-align: center; padding: 2.5rem 5%; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 3rem; }
+    /* ── DIVIDER ── */
+    .section-divider { border: none; border-top: 1px dashed var(--border); margin: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2.5rem 5%;
+      font-size: 0.95rem; color: var(--muted);
+      border-top: 1px solid var(--border); margin-top: 3rem;
+      background: rgba(255,255,255,0.5);
+    }
     footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
-    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      nav { padding: 0 5%; }
+      nav { padding: 0 3%; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .hero-inner { gap: 1.2rem; }
+      .hero-photo-wrap { margin-top: 0; }
       .edu-item { flex-direction: column; gap: 0.3rem; }
       .project-grid { grid-template-columns: 1fr; }
       .resp-header { flex-direction: column; }
+
+      body { font-size: 15px; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 0.97rem; }
+      .subtitle { font-size: 0.97rem; }
+      .btn { font-size: 0.88rem; padding: 0.5rem 1rem; }
+      .edu-year { font-size: 0.82rem; }
+      .edu-detail p { font-size: 0.92rem; }
+      .edu-badge { font-size: 0.78rem; }
+      .card h3 { font-size: 0.95rem; }
+      .card p { font-size: 0.88rem; }
+      .card ul li { font-size: 0.86rem; }
+      .card-tag { font-size: 0.72rem; }
+      .card-gh { font-size: 0.78rem; }
+      .tag { font-size: 0.88rem; padding: 0.28rem 0.8rem; }
+      .skills-block h3 { font-size: 0.82rem; }
+      .ach-list li { font-size: 0.92rem; }
+      .ach-rank { font-size: 1.1rem; }
+      .resp-period { font-size: 0.85rem; }
+      .resp-item ul li { font-size: 0.9rem; }
+      footer { font-size: 0.82rem; }
     }
   </style>
 </head>
@@ -136,27 +297,48 @@
   <a href="#responsibility" class="menu-link">Activities</a>
 </div>
 
+<div class="hero-band">
 <div class="page">
 
   <!-- HERO -->
   <section id="about" class="fade-in">
-    <h1>Thalacheeru<br>Mohith Chowdary</h1>
-    <p class="subtitle">
-      <strong>B.Tech student in Electronics &amp; Communication Engineering</strong> at
-      <strong>IIT Bhubaneswar</strong> (CGPA: 8.36). Passionate about
-      <strong>VLSI &amp; digital design</strong> — from RTL coding in Verilog to FPGA deployment.
-      I enjoy building hardware that works end-to-end, with a growing interest in physical design flows.
-    </p>
-    <div class="hero-links">
-      <a href="mailto:mohithchowdary6929@gmail.com" class="btn btn-primary">✉ Email Me</a>
-      <a href="https://linkedin.com/in/Mohith-Chowdary" class="btn btn-outline" target="_blank">LinkedIn</a>
-      <a href="https://github.com/mohith6929" class="btn btn-outline" target="_blank">GitHub</a>
-      <a href="Mohith_Chowdary.pdf" class="btn btn-outline" target="_blank" download="Mohith_Chowdary_Resume.pdf">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><polyline points="9 14 12 17 15 14"/></svg>
-        Resume
-      </a>
+    <div class="hero-inner">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo" id="heroPhoto">
+          <!--
+            TO ADD YOUR PHOTO:
+            Replace the initials below with:
+            <img src="your-photo.jpg" alt="Mohith Chowdary" />
+          -->
+          <span class="hero-photo-initials">MC</span>
+        </div>
+        <p class="hero-photo-label">Add your photo here</p>
+      </div>
+      <div class="hero-text">
+        <h1>Thalacheeru<br>Mohith Chowdary</h1>
+        <p class="subtitle">
+          <strong>B.Tech student in Electronics &amp; Communication Engineering</strong> at
+          <strong>IIT Bhubaneswar</strong> (CGPA: 8.36). Passionate about
+          <strong>VLSI &amp; digital design</strong> — from RTL coding in Verilog to FPGA deployment.
+          I enjoy building hardware that works end-to-end, with a growing interest in physical design flows.
+        </p>
+        <div class="hero-links">
+          <a href="mailto:mohithchowdary6929@gmail.com" class="btn btn-primary">✉ Email Me</a>
+          <a href="https://www.linkedin.com/in/mohith-chowdary-053256307/" class="btn btn-outline" target="_blank">LinkedIn</a>
+          <a href="https://github.com/mohith6929" class="btn btn-outline" target="_blank">GitHub</a>
+          <a href="Mohith_Chowdary.pdf" class="btn btn-outline" target="_blank" download="Mohith_Chowdary_Resume.pdf">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><polyline points="9 14 12 17 15 14"/></svg>
+            Resume
+          </a>
+        </div>
+      </div>
     </div>
   </section>
+
+</div><!-- /.page -->
+</div><!-- /.hero-band -->
+
+<div class="page">
 
   <!-- EDUCATION -->
   <section id="education" class="fade-in">
@@ -194,7 +376,7 @@
           <li>Verified ADD, ADDI, LW, SW, JAL, JALR, BEQ instructions via simulation &amp; FPGA testing.</li>
           <li>Synthesized and deployed on Basys3 using the Vivado toolchain.</li>
         </ul>
-        <a href="https://github.com/mohith6929/RISC-V-Processor" class="card-gh" target="_blank">
+        <a href="https://github.com/mohith6929/Implementation-of-RISC-V" class="card-gh" target="_blank">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           View on GitHub
         </a>
@@ -209,7 +391,7 @@
           <li>Implemented exponent alignment, mantissa normalization, and rounding logic.</li>
           <li>Verified via VHDL testbench simulation and FPGA deployment on Basys3.</li>
         </ul>
-        <a href="https://github.com/mohith6929/bfloat16-adder-subtractor" class="card-gh" target="_blank">
+        <a href="https://github.com/mohith6929/addition-and-subtraction-of-bfloat-16" class="card-gh" target="_blank">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           View on GitHub
         </a>
@@ -224,11 +406,12 @@
           <li>Integrated ESP8266 with Blynk IoT for real-time mobile alerts.</li>
           <li>Implemented threshold-based buzzer alarms and cloud-based logging.</li>
         </ul>
-        <a href="https://github.com/mohith6929/arduino-gas-detection" class="card-gh" target="_blank">
+        <a href="https://github.com/mohith6929/IoT-based-Gas-Detector" class="card-gh" target="_blank">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           View on GitHub
         </a>
       </div>
+    </div>
   </section>
 
   <!-- SKILLS -->
@@ -296,7 +479,6 @@
         <li>Managed coupon and food partners for Wissenaire, the techno-management fest of IIT Bhubaneswar.</li>
       </ul>
     </div>
-
   </section>
 
   <!-- ACHIEVEMENTS -->
@@ -319,24 +501,45 @@
 </footer>
 
 <script>
+  // Fade-in on scroll
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.06 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+  // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
   });
-
   document.querySelectorAll('.menu-link').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('open');
       mobileMenu.classList.remove('open');
     });
+  });
+
+  // Photo upload on click (for convenience)
+  const heroPhoto = document.getElementById('heroPhoto');
+  heroPhoto.style.cursor = 'pointer';
+  heroPhoto.title = 'Click to upload your photo';
+  heroPhoto.addEventListener('click', () => {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = 'image/*';
+    input.onchange = e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        heroPhoto.innerHTML = `<img src="${ev.target.result}" alt="Mohith Chowdary" />`;
+        const label = document.querySelector('.hero-photo-label');
+        if (label) label.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    };
+    input.click();
   });
 </script>
 
